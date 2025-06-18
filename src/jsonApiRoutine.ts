@@ -3,7 +3,6 @@ import jsonRoutine from './express/jsonRoutine';
 import { context } from './routines/context';
 import { errorHandler } from './routines/errorHandler';
 import { Routine } from './routines/Routine';
-import { ParsedRequest } from './routines/types';
 import { internalServerError } from './shared/errors';
 import { readHeader } from './shared/utils';
 import { userService } from './services/userService';
@@ -22,7 +21,7 @@ export const jsonApiRoutine = Routine.of(jsonRoutine)
   .with(context((_, ctx) => ({ ...ctx, userService, greetingsService })))
   .with(
     authenticateWithToken(
-      (_: ParsedRequest, { token }) => token,
+      (_, { token }) => token,
       (token, { userService }) => userService.authenticate(token),
     ),
   );
