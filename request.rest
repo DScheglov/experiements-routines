@@ -1,0 +1,7 @@
+POST http://localhost:3000/greetings HTTP/1.1
+Content-Type: application/json
+Authorization: admin-token
+
+{
+  "name": "John Doe"
+}
