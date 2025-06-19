@@ -30,7 +30,7 @@ const config = {
     '^(\\.{1,2}/.*)\\.js$': '$1',
   },
 
-  setupFiles: ["<rootDir>/jest.setup.cjs"],
+  setupFiles: ['<rootDir>/jest.setup.cjs'],
 };
 
 module.exports = config;

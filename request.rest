@@ -1,6 +1,6 @@
-POST http://localhost:3000/greetings HTTP/1.1
+POST http://localhost:3000/greetings1 HTTP/1.1
 Content-Type: application/json
-Authorization: admin-token
+Authorization: Bearer admin-token
 
 {
   "name": "John Doe"

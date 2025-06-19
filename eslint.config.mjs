@@ -9,10 +9,10 @@ export default tsLint.config(
     },
   },
   {
-    files: ['**/*.{ts,js,mjs}'],
+    files: ['**/*.{ts,mjs}'],
   },
   {
-    ignores: ['dist', 'node_modules', 'coverage'],
+    ignores: ['dist', 'node_modules', 'coverage', '**/*.{js,cjs,json}'],
   },
   {
     languageOptions: {

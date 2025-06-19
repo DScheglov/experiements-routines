@@ -1,4 +1,4 @@
-const { readFileSync } = require("node:fs");
+const { readFileSync } = require('node:fs');
 
 const envFile = `${process.cwd()}/.env`;
 const content = readFileSync(envFile, 'utf-8');

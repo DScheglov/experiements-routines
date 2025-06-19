@@ -1,6 +1,7 @@
 import { string, struct, value } from 'castage';
+import { compose } from 'resultage/fn';
 import { scopeGranted } from './domain/User';
-import { jsonApiRoutine } from './jsonApiRoutine';
+import { jsonApiEndpoint, jsonApiRoutine } from './jsonApiRoutine';
 import { input } from './routines/input';
 import { output } from './routines/output';
 import { json } from './routines/responses';
@@ -40,6 +41,22 @@ export const postGreetings = jsonApiRoutine
       },
     });
   });
+
+export const postGreetings1 = compose(
+  jsonApiEndpoint,
+  authorizeIf(scopeGranted('greetings:call')),
+  input(GreetingsInputDTO, inputValidationError),
+  output(GreetingsOutputDTO, outputValidationError('postGreetings')),
+)(({ body }, { user, greetingsService }) => {
+  const { name } = body;
+  return json(200, {
+    success: true as const,
+    data: {
+      greeting: greetingsService.great(name, user),
+      from: user.name,
+    },
+  });
+});
 
 export type PostGreetingsInput = InputOf<typeof postGreetings>;
 export type PostGreetingsOutput = OutputOf<typeof postGreetings>;
