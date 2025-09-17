@@ -37,6 +37,7 @@ export default tsLint.config(
         'error',
         {
           trailingComma: 'all',
+          printWidth: 45,
           tabWidth: 2,
           useTabs: false,
           semi: true,
